@@ -5,4 +5,10 @@ edition = "2024"
 repository = "https://github.com/recrypted/pear-trie"
 readme = "README.md"
 license = "MIT OR Apache-2.0"
+
+
 [dependencies]
+ipnet = { version = "2", optional = true }
+
+[features]
+ip = ["dep:ipnet"]

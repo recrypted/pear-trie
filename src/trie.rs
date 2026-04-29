@@ -1,3 +1,6 @@
+#[cfg(feature = "ip")]
+pub mod ip;
+
 use std::borrow::Borrow;
 
 use crate::{Atom, AtomStorage};
