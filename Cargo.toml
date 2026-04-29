@@ -1,0 +1,8 @@
+[package]
+name = "pear-trie"
+version = "0.1.0"
+edition = "2024"
+repository = "https://github.com/recrypted/pear-trie"
+readme = "README.md"
+license = "MIT OR Apache-2.0"
+[dependencies]
