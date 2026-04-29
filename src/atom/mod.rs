@@ -1,3 +1,6 @@
+mod defaults;
+pub use defaults::DenseByte;
+
 pub trait AtomStorage<A, V>: Default {
     /// Look up the value associated with `atom`.
     fn get(&self, atom: &A) -> Option<&V>;

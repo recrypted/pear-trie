@@ -1,3 +1,10 @@
+pub mod array_storage;
+pub mod bit_storage;
+pub mod btree_storage;
+pub mod byte_sparse_storage;
+pub mod hash_storage;
+pub mod sorted_vec_storage;
+
 use std::collections::{BTreeMap, HashMap};
 use std::hash::Hash;
 
@@ -59,3 +66,28 @@ impl<A: Eq + Hash, V> Default for HashStorage<A, V> {
     }
 }
 
+mod thread_safety {
+    use super::*;
+    const fn assert_send<T: Send>() {}
+    const fn assert_sync<T: Sync>() {}
+
+    const _: () = {
+        assert_send::<BitStorage<u32>>();
+        assert_sync::<BitStorage<u32>>();
+
+        assert_send::<ByteSparseStorage<u32>>();
+        assert_sync::<ByteSparseStorage<u32>>();
+
+        assert_send::<ArrayStorage<u8, u32, 256>>();
+        assert_sync::<ArrayStorage<u8, u32, 256>>();
+
+        assert_send::<SortedVecStorage<u32, u32>>();
+        assert_sync::<SortedVecStorage<u32, u32>>();
+
+        assert_send::<BTreeStorage<u32, u32>>();
+        assert_sync::<BTreeStorage<u32, u32>>();
+
+        assert_send::<HashStorage<u32, u32>>();
+        assert_sync::<HashStorage<u32, u32>>();
+    };
+}
