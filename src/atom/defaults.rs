@@ -6,6 +6,13 @@ impl Atom for bool {
     type Storage<V> = BitStorage<V>;
 }
 
+/// Wrapper around `u8` that selects [`ArrayStorage`](crate::ArrayStorage) over
+/// [`ByteSparseStorage`](crate::ByteSparseStorage).
+///
+/// Use this when trie nodes are dense — i.e. most of the 256 possible byte
+/// values appear as children. The plain `u8` atom defaults to a sparse vector,
+/// which is the right pick for human-readable text but wasteful for binary
+/// data with high branching.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DenseByte(pub u8);
 
