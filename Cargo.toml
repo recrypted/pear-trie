@@ -2,10 +2,25 @@
 name = "pear-trie"
 version = "0.1.0"
 edition = "2024"
+description = "Prefix tree (TRIE) implementation on top of generics, with (reasonably) optimal storage backend based on key structure."
 repository = "https://github.com/recrypted/pear-trie"
+documentation = "https://docs.rs/pear-trie/latest/pear-trie"
+keywords = ["trie", "prefix-tree", "data-structures", "ip", "generic"]
+categories = ["data-structures", "network-programming"]
 readme = "README.md"
 license = "MIT OR Apache-2.0"
 
+[[example]]
+name = "v4"
+required-features = ["ip"]
+
+[[example]]
+name = "geoip"
+required-features = ["ip"]
+
+[[test]]
+name = "ip_trie"
+required-features = ["ip"]
 
 [dependencies]
 ipnet = { version = "2", optional = true }
